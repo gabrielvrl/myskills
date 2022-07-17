@@ -33,7 +33,7 @@ export function Home() {
     
     if(currentHour < 12){
       setGretting('Good morning');
-    } else if(currentHour >= 12) {
+    } else if(currentHour >= 12 && currentHour < 18) {
       setGretting('Good afternoon');
     } else {
       setGretting('Good night');

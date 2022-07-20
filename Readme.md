@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-  <img alt="Moveit" src=".github/mySkills.png" height="300" >
+  <img alt="Moveit" src=".github/mySkills.png" height="600" >
 </p>
 
 ---

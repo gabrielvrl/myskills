@@ -68,16 +68,21 @@ export function Home() {
         My Skill
       </Text>
 
-      <FlatList 
-        data={mySkills}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <SkillCard 
-            skill={item.name}
-            onPress={() => handleRemoveSkill(item.id)}
-          />
-        )}
-      />
+      {
+        mySkills &&
+        <FlatList 
+          testID='flatlist-skills'
+          data={mySkills}
+          keyExtractor={item => item.id}
+          keyboardShouldPersistTaps="never"
+          renderItem={({ item }) => (
+            <SkillCard 
+              skill={item.name}
+              onPress={() => handleRemoveSkill(item.id)}
+            />
+          )}
+        />
+      }
     </View>
   )
 }

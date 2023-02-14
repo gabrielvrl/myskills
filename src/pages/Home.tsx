@@ -13,7 +13,7 @@ export function Home() {
   const [mySkills, setMySkills] = useState<SkillData[]>([]);
   const [gretting, setGretting] = useState('')
 
-  function handleAddNewSkill(){
+  function handleAddNewSkill() {
     const data = {
       id: String(new Date().getTime()),
       name: newSkill,
@@ -22,7 +22,7 @@ export function Home() {
     setMySkills(oldState => [...oldState, data]);
   }
 
-  function handleRemoveSkill(id: string){
+  function handleRemoveSkill(id: string) {
     setMySkills(oldState => oldState.filter(
       skill => skill.id !== id
     ));
@@ -30,36 +30,38 @@ export function Home() {
 
   useEffect(() => {
     const currentHour = new Date().getHours();
-    
-    if(currentHour < 12){
+
+    if (currentHour < 12) {
       setGretting('Good morning');
-    } else if(currentHour >= 12 && currentHour < 18) {
+    } else if (currentHour >= 12 && currentHour < 18) {
       setGretting('Good afternoon');
     } else {
       setGretting('Good night');
     }
   }, [])
 
-  return(
+  return (
     <View style={styles.container}>
-      <Text 
+      <Text
+        testID='welcome'
         style={styles.title}
       >
         Welcome, Gabriel
       </Text>
 
       <Text style={styles.greetings}>
-        { gretting }
+        {gretting}
       </Text>
 
-      <TextInput 
-        style={styles.input} 
+      <TextInput
+        testID='input'
+        style={styles.input}
         placeholder="New skill"
         placeholderTextColor="#555"
         onChangeText={setNewSkill}
       />
 
-      <Button 
+      <Button
         onPress={handleAddNewSkill}
         title="Add"
       />
@@ -70,13 +72,13 @@ export function Home() {
 
       {
         mySkills &&
-        <FlatList 
+        <FlatList
           testID='flatlist-skills'
           data={mySkills}
           keyExtractor={item => item.id}
           keyboardShouldPersistTaps="never"
           renderItem={({ item }) => (
-            <SkillCard 
+            <SkillCard
               skill={item.name}
               onPress={() => handleRemoveSkill(item.id)}
             />

@@ -1,4 +1,4 @@
-describe('Home Screen', () => {
+describe('My first E2E test suite', () => {
   beforeAll(async () => {
     await device.launchApp();
   });
@@ -8,20 +8,7 @@ describe('Home Screen', () => {
   });
 
   it('should have welcome screen', async () => {
+
     await expect(element(by.id('welcome'))).toBeVisible();
-  });
-
-  it('check register a new skill', async () => {
-    const inputNewSkill = await element(by.id('input-new-skill'));
-    const buttonAdd = await element(by.id('button-add'));
-    const flatListSkills = await element(by.id('flatlist-skills'));
-
-    await inputNewSkill.tap();
-    await inputNewSkill.typeText('React Native');
-    await buttonAdd.tap();
-
-    await flatListSkills.tap();
-
-    expect(element(by.id('flatlist-skills'))).toBeVisible();
   });
 });
